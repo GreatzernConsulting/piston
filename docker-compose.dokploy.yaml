@@ -1,0 +1,17 @@
+services:
+    api:
+        build: ./api
+        restart: always
+        privileged: true
+        env_file:
+            - path: .env
+              required: false
+        ports:
+            - 2000:2000
+        volumes:
+            - piston_packages:/piston/packages
+        tmpfs:
+            - /tmp:exec
+
+volumes:
+    piston_packages:
